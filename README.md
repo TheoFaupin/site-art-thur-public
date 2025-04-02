@@ -28,6 +28,9 @@ yarn install
 
 # Or if you prefer using pnpm
 pnpm install
+
+# If this fail consider using
+npm install --legacy-peer-deps
 ```
 
 ## Running the Project

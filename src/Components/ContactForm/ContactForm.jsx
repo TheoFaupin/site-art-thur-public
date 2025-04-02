@@ -51,7 +51,7 @@ const ContactForm = () => {
 
     return (
         <div className="w-full max-w-md">
-            <p className="text-responsive-body mb-6">
+            <p className="text-base sm:text-lg md:text-xl font-hepta mb-6">
                 Got a question or proposal, or just want to say hello? Go ahead.
             </p>
 

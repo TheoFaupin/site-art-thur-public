@@ -30,7 +30,7 @@ const ContactPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          <h2 className="text-responsive-subtitle mb-2">Send me a message</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-hepta mb-2">Send me a message</h2>
         </motion.div>
 
         <motion.div
