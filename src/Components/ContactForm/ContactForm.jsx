@@ -21,19 +21,14 @@ const ContactForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Early return - form submission disabled for now
-        return;
-
-        // The rest of the function will not execute
         setIsSubmitting(true);
         setSubmitStatus(null);
 
-        // Replace these with your actual EmailJS service, template, and user IDs
         emailjs.sendForm(
-            'YOUR_SERVICE_ID',
-            'YOUR_TEMPLATE_ID',
+            import.meta.env.VITE_EMAILJS_SERVICE_ID,
+            import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
             form.current,
-            'YOUR_PUBLIC_KEY'
+            import.meta.env.VITE_EMAILJS_PUBLIC_KEY
         )
             .then((result) => {
                 console.log('Email sent successfully:', result.text);
@@ -77,7 +72,6 @@ const ContactForm = () => {
                         placeholder="Name"
                         className="w-full p-3 border border-gray-300 rounded bg-white"
                         required
-                        disabled
                     />
                 </div>
 
@@ -90,7 +84,6 @@ const ContactForm = () => {
                         placeholder="Email"
                         className="w-full p-3 border border-gray-300 rounded bg-white"
                         required
-                        disabled
                     />
                 </div>
 
@@ -103,17 +96,18 @@ const ContactForm = () => {
                         rows="6"
                         className="w-full p-3 border border-gray-300 rounded bg-white resize-none"
                         required
-                        disabled
                     ></textarea>
                 </div>
 
                 <div className="flex justify-center">
                     <button
                         type="submit"
-                        disabled={true}
-                        className="bg-arthur-burgundy text-white py-3 px-8 rounded opacity-70 cursor-not-allowed"
+                        disabled={isSubmitting}
+                        className={`bg-arthur-burgundy text-white py-3 px-8 rounded ${
+                            isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-arthur-burgundy-dark'
+                        }`}
                     >
-                        Coming Soon
+                        {isSubmitting ? 'Sending...' : 'Send Message'}
                     </button>
                 </div>
             </form>
